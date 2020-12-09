@@ -758,7 +758,7 @@ print('컴퓨터 설정이 완료되었습니다.')
 #본격 크롤링 시작.
 tno=start
 while tno <=end:
-    no="https://gall.dcinside.com/mgallery/board/lists?id + cafedir + "&no="+ str(tno)
+    no="https://gall.dcinside.com/mgallery/board/lists?id"+ cafedir+ "&no="+ str(tno)
     driver.get(no)
     time.sleep(int(sleeptime))
     try:
