@@ -688,8 +688,6 @@ Public License instead of this License.  But first, please read
 
 
 print('크롤링 프로그램 시작중...')
-print('사용중 문제나 어려움이 있을시, 스크린샷 첨부해서 admin@nonaver.com으로 메일 주시면 도와드리겠습니다.')
-print('NCBP 0.35버젼입니다. 2020년 11월 01일 배포.')
 
 #-----------------------아래부터 프로그램 시작-----------------------------
 ##-------프로그램 초기화,모듈 로딩--------
@@ -716,13 +714,13 @@ except:
 		time.sleep(3)
 		driver = webdriver.Chrome(executable_path="C:/Users/%s/NCBP/programdata/chromedriver_87.exe" % username)
 		driver.implicitly_wait(1)
-		driver.get("https://naver.com")
+		driver.get("https://dcinside.com")
 	except:
 		try:
 			time.sleep(3)
 			driver = webdriver.Chrome(executable_path="C:/Users/%s/NCBP/programdata/chromedriver_85.exe" % username)
 			driver.implicitly_wait(1)
-			driver.get("https://naver.com")
+			driver.get("https://dcinside.com")
 		except:
 			print('경고: 프로그램 실행과 초기화에 실패했습니다')
 			print('chrome설치여부와 버전을 확인해 주세요')
@@ -740,10 +738,7 @@ else:
 ##--------초기화,모듈로딩 끝----------------
 
 ##-------크롤링 사이트 로그인요청/사이트 지정----------------
-print('현재 접속된 네이버 홈페이지에서 로그인해 주세요!')
-time.sleep(5)
-print('갤주소를 입력해주세요.')
-print('주소 뒤쪽에 슬래시 있으면 안됩니다. 없애주세요!')
+print('갤id를 입력해주세요.')
 cafedir = input()
 start = input('저장을 시작할 게시글 번호를 입력하고 엔터키 누르세요: ')
 end = input('저장을 끝낼 게시글 번호를 입력하고 엔터키 누르세요: ')
@@ -763,7 +758,7 @@ print('컴퓨터 설정이 완료되었습니다.')
 #본격 크롤링 시작.
 tno=start
 while tno <=end:
-    no=cafedir + "&no="+ str(tno)
+    no="https://gall.dcinside.com/mgallery/board/lists?id + cafedir + "&no="+ str(tno)
     driver.get(no)
     time.sleep(int(sleeptime))
     try:
