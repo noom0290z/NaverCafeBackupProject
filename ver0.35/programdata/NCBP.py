@@ -742,14 +742,14 @@ else:
 ##-------크롤링 사이트 로그인요청/사이트 지정----------------
 print('현재 접속된 네이버 홈페이지에서 로그인해 주세요!')
 time.sleep(5)
-print('아래에 https://cafe.naver.com/skyplanet와 같이 카페 주소를 입력하세요.')
+print('갤주소를 입력해주세요.')
 print('주소 뒤쪽에 슬래시 있으면 안됩니다. 없애주세요!')
 cafedir = input()
 start = input('저장을 시작할 게시글 번호를 입력하고 엔터키 누르세요: ')
 end = input('저장을 끝낼 게시글 번호를 입력하고 엔터키 누르세요: ')
 start=int(start)
 end=int(end)
-print('카페 설정이 완료되었습니다.')
+print('갤러리 설정이 완료되었습니다.')
 
 
 
@@ -763,7 +763,7 @@ print('컴퓨터 설정이 완료되었습니다.')
 #본격 크롤링 시작.
 tno=start
 while tno <=end:
-    no=cafedir + "/"+ str(tno)
+    no=cafedir + "&no="+ str(tno)
     driver.get(no)
     time.sleep(int(sleeptime))
     try:
@@ -776,8 +776,6 @@ while tno <=end:
         html = driver.page_source.encode('utf-8')
         html= html.decode('utf-8')
         f = open('C:/Users/%s/NCBP/CAFE/%d.html' % (username, int(tno)) , 'w' , encoding='UTF-8')
-        html = html.replace(u'<iframe title="답변쓰기에디터"' , u'w')
-        html = html.replace('<meta name=\"robots\" content=\"noindex, nofollow\">' , '<meta charset=\"UTF-8\">' , 1)
         f.write(html)
         f.close()
         print("%d번 게시글 저장완료." % int(tno))
