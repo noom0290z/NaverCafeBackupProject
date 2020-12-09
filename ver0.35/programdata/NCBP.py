@@ -708,7 +708,7 @@ except:
 try:
 	driver = webdriver.Chrome(executable_path="C:/Users/%s/NCBP/programdata/chromedriver_86.exe" % username)
 	driver.implicitly_wait(1)
-	driver.get("https://naver.com")
+	driver.get("https://dcinside.com")
 except:
 	try:
 		time.sleep(3)
@@ -739,7 +739,7 @@ else:
 
 ##-------크롤링 사이트 로그인요청/사이트 지정----------------
 print('갤id를 입력해주세요.')
-cafedir = input()
+gallid = input()
 start = input('저장을 시작할 게시글 번호를 입력하고 엔터키 누르세요: ')
 end = input('저장을 끝낼 게시글 번호를 입력하고 엔터키 누르세요: ')
 start=int(start)
@@ -758,7 +758,7 @@ print('컴퓨터 설정이 완료되었습니다.')
 #본격 크롤링 시작.
 tno=start
 while tno <=end:
-    no="https://gall.dcinside.com/mgallery/board/lists?id"+ cafedir+ "&no="+ str(tno)
+    no="https://gall.dcinside.com/mgallery/board/view/?id="+ gallid+ "&no="+ str(tno)
     driver.get(no)
     time.sleep(int(sleeptime))
     try:
@@ -767,7 +767,6 @@ while tno <=end:
         print("%d번 게시글은 존재하지 않음" % tno)
         tno = tno +1
     except:
-        driver.switch_to.frame('cafe_main')
         html = driver.page_source.encode('utf-8')
         html= html.decode('utf-8')
         f = open('C:/Users/%s/NCBP/CAFE/%d.html' % (username, int(tno)) , 'w' , encoding='UTF-8')
